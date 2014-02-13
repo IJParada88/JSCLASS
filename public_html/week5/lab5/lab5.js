@@ -53,15 +53,15 @@ function submitform() {
         } 
         else if ( noSpaceAlphaValidate( fname.value ) == false ) {
             
-                   name.className = "bad";
-                   nameErr.innerHTML = "<strong>First is <em>NOT</em> valid</strong>";
-                   nameErr.className = "error";
+                name.className = "bad";
+                nameErr.innerHTML = "<strong>First is <em>NOT</em> valid</strong>";
+                nameErr.className = "error";
                 console.log("Fname needs Alpha chars");
         } 
         else {
-                    name.className = "good";
-                    nameErr.innerHTML= "OK!";
-                    nameErr.className= "valid";
+                name.className = "good";
+                nameErr.innerHTML= "OK!";
+                nameErr.className= "valid";
                 console.log("firstName is good");
         }
         
@@ -72,15 +72,15 @@ function submitform() {
                 console.log("Lname needs a length");
         } else if ( SpaceAlphaValidate( lname.value ) == false ) {
             
-                   Lname.className = "bad";
-                   lnameErr.innerHTML = "<strong>First is <em>NOT</em> valid</strong>";
-                   lnameErr.className = "error";
+                Lname.className = "bad";
+                lnameErr.innerHTML = "<strong>First is <em>NOT</em> valid</strong>";
+                lnameErr.className = "error";
                 console.log("Lname needs Alpha chars");
         } else {
-            
-                    Lname.className = "good";
-                    lnameErr.innerHTML= "OK!";
-                    lnameErr.className= "valid";
+                    
+                Lname.className = "good";
+                lnameErr.innerHTML= "OK!";
+                lnameErr.className= "valid";
                 console.log("Last Name is good");
         }
         
@@ -91,9 +91,9 @@ function submitform() {
                 console.log("Lname needs a length");
         } else if ( ValidateEmail( mail.value ) == false ) {
             
-                   email.className = "bad";
-                   mailErr.innerHTML = "<strong> Email is <em>NOT</em> valid</strong>";
-                   mailErr.className = "error";
+                email.className = "bad";
+                mailErr.innerHTML = "<strong> Email is <em>NOT</em> valid</strong>";
+                mailErr.className = "error";
                 console.log("Please Enter a Valid E mail");
         } else {
             
