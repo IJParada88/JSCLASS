@@ -5,6 +5,8 @@
  */
 
 //this function chooses all the links and changes the color when you hover over them
+
+
 $("a").mouseover(function (){
     $(this).css('color', 'white').css('background-color', 'purple');
 });
