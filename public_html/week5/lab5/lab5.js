@@ -4,126 +4,101 @@
  * and open the template in the editor.
  */
 
-var fname = document.getElementById('fname');
-var lname = document.getElementById('lname');
-var mail = document.getElementById('email');
-var comments = document.getElementById('comments');
-
-
-function noSpaceAlphaValidate( str ) {
+function noSpaceAlphaValidate( str ) {      //First name validation (No spaces allowed)
         var alphaRegex = /^[A-z]{1,}$/;
         return alphaRegex.test(str);			
 }
-
-function SpaceAlphaValidate( str ) {
-        var alphaRegex = /^[A-z, ]{1,}$/;
-        return alphaRegex.test(str);			
+  
+function spaceAlphaValidate( str ) {        //Last name validation (spaces allowed)
+        var alphaRegex = /^[A-z" "]{1,}$/;
+        return alphaRegex.test(str);
 }
 
-function ValidateEmail( str ) {
-        var alphaRegex = /(^[a-sA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{3}$)/;
-        return alphaRegex.test(str);			
+function emailValidate ( str ) {            //Email validation
+        var emailRegex = /(^[A-z]+@[A-z]+.[A-z]{3}$)/;
+        return emailRegex.test( str );
+    
 }
 
-function strip_HTML(str) {
+function strip_HTML(str) {                  //Comment HTML remove function
         var findHtml = /<(.|\n)*?>/gi;
         return str.replace(findHtml,"");
 }
 
+function submitform() {                     //Submit button funtion to run each validation function above
 
-var name = document.getElementById ("name");//these are both my variables, each will do different things according to how they validate
-var nameErr = document.getElementById("err_name");
 
-var Lname = document.getElementById ("name");//these are both my variables, each will do different things according to how they validate
-var lnameErr = document.getElementById("err_lname");
+        var fname = document.getElementById("fname");           //Store input into variables
+        var lname = document.getElementById("lname");
+        var email = document.getElementById("email");
+        var comments = document.getElementById("comments");
 
-var email = document.getElementById ("email");
-var mailErr = document.getElementById("err_email"); 
-
-var ccomments = document.getElementById ("comments");
-var commentsErr = document.getElementById("err_comments");
-
-function submitform() {
-
-    
-    var fname = document.getElementById('fname');
-        
-        if ( !fname.value.length ) {
-                console.log("Fname needs a length");
-        } 
-        else if ( noSpaceAlphaValidate( fname.value ) == false ) {
-            
-                name.className = "bad";
-                nameErr.innerHTML = "<strong>First is <em>NOT</em> valid</strong>";
-                nameErr.className = "error";
-                console.log("Fname needs Alpha chars");
-        } 
-        else {
-                name.className = "good";
-                nameErr.innerHTML= "OK!";
-                nameErr.className= "valid";
-                console.log("firstName is good");
+        if ( !fname.value.length ) {                            //Test first name length
+                console.log("First name needs a length");
+                ferr_name.innerHTML = "<strong>First name needs a length</strong>";      //Output error message
+                fname.className = "bad";                                         //Add red border to input area
+                ferr_name.className = "error";                                   //Change message class to error
+        } else if ( noSpaceAlphaValidate( fname.value ) == false ) {        //Run function to check first name validity
+                console.log("First name cannot contain spaces or numbers");
+                ferr_name.innerHTML = "<strong>First name cannot contain spaces or numbers</strong>";      //Output error message
+                fname.className = "bad";                                         //Add red border to input area
+                ferr_name.className = "error";                                   //Change message class to error
+        } else {
+                console.log("First name is good");
+                ferr_name.innerHTML = "<strong>Name is valid</strong>";  //Output valid message
+                fname.className = "good";                                //Add green border to input area
+                ferr_name.className = "valid";                           //Change message class to valid
         }
-        
-    
-    var lname = document.getElementById('lname');
-        
+                        
         if ( !lname.value.length ) {
-                console.log("Lname needs a length");
-        } else if ( SpaceAlphaValidate( lname.value ) == false ) {
-            
-                Lname.className = "bad";
-                lnameErr.innerHTML = "<strong>First is <em>NOT</em> valid</strong>";
-                lnameErr.className = "error";
-                console.log("Lname needs Alpha chars");
+                console.log("Last name needs a length");        //Test last name length
+                lerr_name.innerHTML = "<strong>Last name needs a length</strong>";      //Output error message
+                lname.className = "bad";                                         //Add red border to input area
+                lerr_name.className = "error";                                   //Change message class to error
+        } else if ( spaceAlphaValidate( lname.value ) == false ) {          //Run function to check last name validity 
+                console.log("Last name cannot contain numbers");
+                lerr_name.innerHTML = "<strong>Last name cannot contain numbers</strong>";      //Output error message
+                lname.className = "bad";                                         //Add red border to input area
+                lerr_name.className = "error";                                   //Change message class to error
         } else {
-                    
-                Lname.className = "good";
-                lnameErr.innerHTML= "OK!";
-                lnameErr.className= "valid";
-                console.log("Last Name is good");
+                console.log("Last name is good");
+                lerr_name.innerHTML = "<strong>Name is valid</strong>";  //Output valid message
+                lname.className = "good";                                //Add green border to input area
+                lerr_name.className = "valid";                           //Change message class to valid
         }
         
-        
-    var mail = document.getElementById('email');
-        
-        if ( !mail.value.length ) {
-                console.log("Lname needs a length");
-        } else if ( ValidateEmail( mail.value ) == false ) {
-            
-                email.className = "bad";
-                mailErr.innerHTML = "<strong> Email is <em>NOT</em> valid</strong>";
-                mailErr.className = "error";
-                console.log("Please Enter a Valid E mail");
+        if ( !email.value.length ) {                            //Test email for length
+                console.log("Please enter your email");                     //Run function to check email validity
+                err_email.innerHTML = "<strong>Please enter your email</strong>";    //Output error message
+                email.className = "bad";                                        //Add red border to input area
+                err_email.className = "error";                                  //Change message class to error
+        } else if ( emailValidate( email.value ) === false ) {
+                console.log("Email is not valid");
+                err_email.innerHTML = "<strong>Email is NOT valid</strong>";    //Output error message
+                email.className = "bad";                                        //Add red border to input area
+                err_email.className = "error";                                  //Change message class to error
         } else {
-            
-                email.className = "good";
-                mailErr.innerHTML = "OK!";
-                mailErr.className = "valid";
-                console.log("E mail is good");
+                console.log("Email is good");
+                err_email.innerHTML = "<strong>Email is valid</strong>";        //Output valid message
+                email.className = "good";                                       //Add green border to input area
+                err_email.className = "valid";                                  //Change message class to valid
         }
         
-    
-    var comments = document.getElementById('comments');
-    comments.value = strip_HTML(comments.value);
-        
-        if ( !comments.value.length || comments.value.length >150 ) {
-            
-                ccomments.className = "bad";
-                commentsErr.innerHTML = "<strong> <em> Please enter keep your comments under 150 characters </em></strong>";
-                commentsErr.className = "error";
-                console.log( "Comments needs a length");
-        } 
-        else {
-            
-                ccomments.className = "good";
-                commentsErr.innerHTML = "OK!";
-                commentsErr.className = "valid";
-                console.log("Comments is good");
+        if ( !comments.value.length ){
+                err_comments.innerHTML = "<strong>Please enter some comments</strong>";
+                comments.className = "bad";
+                err_comments.className = "error";
         }
+        else if ( comments.value.length >= 150 ){
+                err_comments.innerHTML = "<strong>Please enter less than 150 characters</strong>";
+                comments.className = "bad";
+                err_comments.className = "error";
+        }
+        else{
+                err_comments.innerHTML = "<strong>Comments are good</strong>";
+                comments.className = "good";
+                err_comments.className = "valid";
+        }
+        comments.value = strip_HTML( comments.value );          //Run function to check and remove HTML from comments
+       
 }
-
-document.getElementById('subBtn').addEventListener('click', submitform );
-
-
-

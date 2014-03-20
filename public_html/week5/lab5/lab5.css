@@ -4,8 +4,8 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Jan 15, 2014, 7:02:12 PM
-    Author     : GFORTI
+    Created on : Feb 5, 2014, 7:25:23 PM
+    Author     : bean2_000
 */
 
 html, body {
@@ -56,25 +56,26 @@ html, body {
         
         .error {
                 color: red;
+                font-size: 70%;
         }
         
         .valid {
-                color: greenyellow;
+                color: green;
         }
         
-        input[type=text].bad, textarea.bad {
+        input[type=text].bad {
                 border: 2px solid red;
         }
         
-        input[type=text].good, textarea.good {
+        input[type=text].good {
                 border: 2px solid green;
+        }
+        
+        input[type=text].badcomments {
+                font-size: 20px;
         }
         
         textarea {
             width :90%;
             height: 100px;
         }
-        
-        
-
-
